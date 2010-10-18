@@ -1,0 +1,1 @@
+Gentle Status Bar is a Chrome-like status bar extension for Safari
