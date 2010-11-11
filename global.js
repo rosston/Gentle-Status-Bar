@@ -1,4 +1,4 @@
-var externalOnly = false;
+var externalOnly = safari.extension.settings.getItem("external_only");
 
 function GlobalHandleMessage(MsgEvent)
 {
