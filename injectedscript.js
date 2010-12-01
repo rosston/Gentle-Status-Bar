@@ -47,6 +47,7 @@ if (isInIFrame === false)
 	var command = false;
 	var control = false;
 	var linkHref = "";
+	var shouldShow = false;
 	
 	function UpdateMessage()
 	{
@@ -136,11 +137,12 @@ if (isInIFrame === false)
 	{
 		if (linkHref !== "")
 		{
+			shouldShow = true;
 			UpdateMessage();
 			$("#aaGentleStatus").addClass("aaGentleStatusShow");
 		}
 	}
-	
+		
 	function HideStatusBar()
 	{
 		$("#aaGentleStatus").removeClass("aaGentleStatusShow");
@@ -167,6 +169,10 @@ if (isInIFrame === false)
 			}
 		});
 		$("a").live("mouseout", function()
+		{
+			HideStatusBar();
+		});
+		$("a").live("click", function()
 		{
 			HideStatusBar();
 		});
@@ -274,6 +280,10 @@ else
 			SendMessage("ShowStatusBar", true);
 		});
 		$("a").live("mouseout", function()
+		{
+			SendMessage("HideStatusBar", true);
+		});
+		$("a").live("click", function()
 		{
 			SendMessage("HideStatusBar", true);
 		});
