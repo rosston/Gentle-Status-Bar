@@ -47,7 +47,6 @@ if (isInIFrame === false)
 	var command = false;
 	var control = false;
 	var linkHref = "";
-	var shouldShow = false;
 	
 	function UpdateMessage()
 	{
@@ -137,12 +136,11 @@ if (isInIFrame === false)
 	{
 		if (linkHref !== "")
 		{
-			shouldShow = true;
 			UpdateMessage();
 			$("#aaGentleStatus").addClass("aaGentleStatusShow");
 		}
 	}
-		
+	
 	function HideStatusBar()
 	{
 		$("#aaGentleStatus").removeClass("aaGentleStatusShow");
