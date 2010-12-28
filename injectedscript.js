@@ -47,6 +47,7 @@ if (isInIFrame === false)
 	var command = false;
 	var control = false;
 	var linkHref = "";
+	var linkTarget = "";
 	
 	function UpdateMessage()
 	{
@@ -96,9 +97,15 @@ if (isInIFrame === false)
 		else
 		{
 			intro = "Go to "
+			if (linkTarget === "_blank")
+			{
+				intro = "Open ";
+				outro = " in a new window";
+			}
 			if (alt === true && shift === false)
 			{
 				intro = "Download ";
+				outro = "";
 			}
 			if (command === true)
 			{
@@ -157,20 +164,18 @@ if (isInIFrame === false)
 		$("#aaGentleStatus").addClass("aaGentleStatusLeft");
 		$(document).keydown(function(e) { DetectKeys(e, true); });
 		$(document).keyup(function(e) { DetectKeys(e, false); });
+		SendMessage("setting_external_only", null);
 		$("a").live("mouseover", function()
 		{
 			SendMessage("setting_external_only", null);
 			if (externalOnly === false || (externalOnly === true && window.location.hostname !== parseURL(this.href).host))
 			{
 				linkHref = this.href;
+				linkTarget = this.target;
 				ShowStatusBar();
 			}
 		});
-		$("a").live("mouseout", function()
-		{
-			HideStatusBar();
-		});
-		$("a").live("click", function()
+		$("a").live("mouseout click", function()
 		{
 			HideStatusBar();
 		});
@@ -219,6 +224,11 @@ if (isInIFrame === false)
 			case "linkHref":
 			{
 				linkHref = MsgData;
+				break;
+			}
+			case "linkTarget":
+			{
+				linkTarget = MsgData;
 				break;
 			}
 			case "UpdateMessage":
@@ -275,13 +285,10 @@ else
 		$("a").live("mouseover", function()
 		{
 			SendMessage("linkHref", this.href);
+			SendMessage("linkTarget", this.target);
 			SendMessage("ShowStatusBar", true);
 		});
-		$("a").live("mouseout", function()
-		{
-			SendMessage("HideStatusBar", true);
-		});
-		$("a").live("click", function()
+		$("a").live("mouseout click", function()
 		{
 			SendMessage("HideStatusBar", true);
 		});

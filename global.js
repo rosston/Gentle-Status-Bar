@@ -11,6 +11,11 @@ function GlobalHandleMessage(MsgEvent)
 			GlobalReturnMessage("linkHref", MsgData);
 			break;
 		}
+		case "linkTarget":
+		{
+			GlobalReturnMessage("linkTarget", MsgData);
+			break;
+		}
 		case "UpdateMessage":
 		{
 			GlobalReturnMessage("UpdateMessage", true);
