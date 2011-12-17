@@ -8,35 +8,37 @@ function SendMessage(MsgName, MsgData)
 
 function parseURL(url)
 {
-    var a = document.createElement('a');
+    var a = document.createElement("a");
     a.href = url;
     return {
         source: url,
-        protocol: a.protocol.replace(':', ''),
+        protocol: a.protocol.replace(":", ""),
         host: a.hostname,
         port: a.port,
         query: a.search,
         params: (function()
         {
             var ret = {},
-                seg = a.search.replace(/^\?/, '').split('&'),
-                len = seg.length, i = 0, s;
+                seg = a.search.replace(/^\?/, "").split("&"),
+                len = seg.length,
+                i = 0,
+                s;
             for (; i < len; i++)
             {
                 if (!seg[i])
                 {
                 	continue;
                 }
-                s = seg[i].split('=');
+                s = seg[i].split("=");
                 ret[s[0]] = s[1];
             }
             return ret;
         })(),
-        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
-        hash: a.hash.replace('#', ''),
-        path: a.pathname.replace(/^([^\/])/, '/$1'),
-        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
-        segments: a.pathname.replace(/^\//,'').split('/')
+        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ""])[1],
+        hash: a.hash.replace("#", ""),
+        path: a.pathname.replace(/^([^\/])/, "/$1"),
+        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ""])[1],
+        segments: a.pathname.replace(/^\//, "").split("/")
     };
 }
 
@@ -48,6 +50,7 @@ if (isInIFrame === false)
 	var control = false;
 	var linkHref = "";
 	var linkTarget = "";
+	var statusBar;
 	
 	function UpdateMessage()
 	{
@@ -136,7 +139,7 @@ if (isInIFrame === false)
 			outro = "";
 			linkShow = linkHref;
 		}
-		$("#aaGentleStatus p").text(intro + "\"" + linkShow + "\"" + outro);
+		statusBar.find("p").text(intro + "\"" + linkShow + "\"" + outro);
 	}
 	
 	function ShowStatusBar()
@@ -144,24 +147,23 @@ if (isInIFrame === false)
 		if (linkHref !== "")
 		{
 			UpdateMessage();
-			$("#aaGentleStatus").addClass("aaGentleStatusShow");
+			statusBar.addClass("tools-rubenarakelyan-com-safari-gentlestatus-show");
 		}
 	}
 	
 	function HideStatusBar()
 	{
-		$("#aaGentleStatus").removeClass("aaGentleStatusShow");
-		if ($("#aaGentleStatus").hasClass("aaGentleStatusRight"))
+		statusBar.removeClass("tools-rubenarakelyan-com-safari-gentlestatus-show");
+		if (statusBar.hasClass("tools-rubenarakelyan-com-safari-gentlestatus-right"))
 		{
-			$("#aaGentleStatus").removeClass("aaGentleStatusRight");
-			$("#aaGentleStatus").addClass("aaGentleStatusLeft");
+			statusBar.removeClass("tools-rubenarakelyan-com-safari-gentlestatus-right").addClass("tools-rubenarakelyan-com-safari-gentlestatus-left");
 		}
 	}
 	
 	$(function()
 	{
-		$("body").append("<div id=\"aaGentleStatus\"><p></p></div>");
-		$("#aaGentleStatus").addClass("aaGentleStatusLeft");
+		$("body").append("<div id=\"tools-rubenarakelyan-com-safari-gentlestatus\" class=\"tools-rubenarakelyan-com-safari-gentlestatus-left\"><p></p></div>");
+		statusBar = $("#tools-rubenarakelyan-com-safari-gentlestatus");
 		$(document).keydown(function(e) { DetectKeys(e, true); });
 		$(document).keyup(function(e) { DetectKeys(e, false); });
 		SendMessage("setting_external_only", null);
@@ -179,17 +181,15 @@ if (isInIFrame === false)
 		{
 			HideStatusBar();
 		});
-		$("#aaGentleStatus").bind("mouseover", function()
+		statusBar.bind("mouseover", function()
 		{
-			if ($("#aaGentleStatus").hasClass("aaGentleStatusLeft"))
+			if (statusBar.hasClass("tools-rubenarakelyan-com-safari-gentlestatus-left"))
 			{
-				$("#aaGentleStatus").removeClass("aaGentleStatusLeft");
-				$("#aaGentleStatus").addClass("aaGentleStatusRight");
+				statusBar.removeClass("tools-rubenarakelyan-com-safari-gentlestatus-left").addClass("tools-rubenarakelyan-com-safari-gentlestatus-right");
 			}
 			else
 			{
-				$("#aaGentleStatus").removeClass("aaGentleStatusRight");
-				$("#aaGentleStatus").addClass("aaGentleStatusLeft");
+				statusBar.removeClass("tools-rubenarakelyan-com-safari-gentlestatus-right").addClass("tools-rubenarakelyan-com-safari-gentlestatus-left");
 			}
 		});
 	});

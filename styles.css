@@ -1,4 +1,4 @@
-#aaGentleStatus {
+#tools-rubenarakelyan-com-safari-gentlestatus {
 	position: fixed !important;
 	max-width: 50% !important;
 	height: 16px !important;
@@ -9,12 +9,12 @@
 	z-index: -999999999999999999 !important;
 }
 
-#aaGentleStatus.aaGentleStatusShow {
+#tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-show {
 	opacity: 1 !important;
 	z-index: 999999999999999999 !important;
 }
 
-#aaGentleStatus.aaGentleStatusLeft {
+#tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-left {
 	bottom: 0 !important;
 	left: 0 !important;
 	border-top: 1px solid #515151 !important;
@@ -22,7 +22,7 @@
 	border-top-right-radius: 5px !important;
 }
 
-#aaGentleStatus.aaGentleStatusRight {
+#tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-right {
 	bottom: 0 !important;
 	right: 0 !important;
 	border-top: 1px solid #515151 !important;
@@ -30,7 +30,7 @@
 	border-top-left-radius: 5px !important;
 }
 
-#aaGentleStatus p {
+#tools-rubenarakelyan-com-safari-gentlestatus p {
 	text-align: left !important;
 	vertical-align: middle !important;
 	font: 10px/15px "Lucida Grande" !important;
@@ -48,7 +48,7 @@
 }
 
 @media print {
-	#aaGentleStatus {
+	#tools-rubenarakelyan-com-safari-gentlestatus {
 		display: none !important;
 	}
 }

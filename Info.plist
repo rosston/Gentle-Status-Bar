@@ -4,6 +4,8 @@
 <dict>
 	<key>Author</key>
 	<string>Daniel Matarazzo &amp; Ruben Arakelyan</string>
+	<key>Builder Version</key>
+	<string>7534.52.7</string>
 	<key>CFBundleDisplayName</key>
 	<string>Gentle Status Bar</string>
 	<key>CFBundleIdentifier</key>
@@ -11,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.44</string>
+	<string>1.45</string>
 	<key>CFBundleVersion</key>
-	<string>1.44</string>
+	<string>1.45</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -36,7 +38,7 @@
 		</dict>
 		<key>Stylesheets</key>
 		<array>
-			<string>aaGentleStatus.css</string>
+			<string>styles.css</string>
 		</array>
 	</dict>
 	<key>Description</key>
