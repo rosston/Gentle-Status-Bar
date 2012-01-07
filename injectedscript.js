@@ -1,45 +1,9 @@
 var isInIFrame = (window.top !== window);
 var externalOnly = false;
 
-function SendMessage(MsgName, MsgData)
+function SendMessage(name, message)
 {
-	safari.self.tab.dispatchMessage(MsgName, MsgData);
-}
-
-function parseURL(url)
-{
-    var a = document.createElement("a");
-    a.href = url;
-    return {
-        source: url,
-        protocol: a.protocol.replace(":", ""),
-        host: a.hostname,
-        port: a.port,
-        query: a.search,
-        params: (function()
-        {
-            var ret = {},
-                seg = a.search.replace(/^\?/, "").split("&"),
-                len = seg.length,
-                i = 0,
-                s;
-            for (; i < len; i++)
-            {
-                if (!seg[i])
-                {
-                	continue;
-                }
-                s = seg[i].split("=");
-                ret[s[0]] = s[1];
-            }
-            return ret;
-        })(),
-        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ""])[1],
-        hash: a.hash.replace("#", ""),
-        path: a.pathname.replace(/^([^\/])/, "/$1"),
-        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ""])[1],
-        segments: a.pathname.replace(/^\//, "").split("/")
-    };
+	safari.self.tab.dispatchMessage(name, message);
 }
 
 if (isInIFrame === false)
@@ -48,61 +12,93 @@ if (isInIFrame === false)
 	var alt = false;
 	var command = false;
 	var control = false;
-	var linkHref = "";
-	var linkTarget = "";
-	var statusBar;
+	var linkType = null;
+	var linkHref = undefined;
+	var linkTarget = undefined;
+	var statusBar = null;
+	
+	function parseURL(url)
+	{
+		var a = document.createElement("a");
+		a.href = url;
+		return {
+			source: url,
+			resolved: a.href,
+			protocol: a.protocol.replace(":", ""),
+			host: a.hostname,
+			port: a.port,
+			query: a.search,
+			params: (function()
+			{
+				var ret = {},
+					seg = a.search.replace(/^\?/, "").split("&"),
+					len = seg.length,
+					i = 0,
+					s;
+				for (; i < len; i++)
+				{
+					if (!seg[i])
+					{
+						continue;
+					}
+					s = seg[i].split("=");
+					ret[s[0]] = s[1];
+				}
+				return ret;
+			})(),
+			file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ""])[1],
+			hash: a.hash.replace("#", ""),
+			path: a.pathname.replace(/^([^\/])/, "/$1"),
+			relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ""])[1],
+			segments: a.pathname.replace(/^\//, "").split("/")
+		};
+	}
 	
 	function UpdateMessage()
 	{
 		var intro = "";
 		var outro = "";
-		var linkShow = "";
-		var urlParams = {};
+		var linkShow = parseURL(linkHref).resolved;
 		if (linkHref.substr(0, 7).toLowerCase() === "mailto:")
 		{
 			intro = "Send email to ";
-			linkShow = linkHref.substr(7);
+			linkShow = linkShow.substr(7);
 		}
 		else if (linkHref.substr(0, 4).toLowerCase() === "tel:")
 		{
 			intro = "Call ";
-			linkShow = linkHref.substr(4);
+			linkShow = linkShow.substr(4);
 		}
 		else if (linkHref.substr(0, 7).toLowerCase() === "callto:")
 		{
 			intro = "Call ";
-			linkShow = linkHref.substr(7);
-		}
-		else if (linkHref.substr(0, 4).toLowerCase() === "aim:")
-		{
-			intro = "Send instant message to ";
-			(function()
-			{
-				var e, d = function(s)
-				{
-					return decodeURIComponent(s.replace(/\+/g, " "));
-				},
-				q = linkHref.split("?")[1], r = /([^&=]+)=?([^&]*)/g;
-				while (e = r.exec(q)) urlParams[d(e[1])] = d(e[2]);
-			})();
-			linkShow = urlParams["screenname"];
-		}
-		else if (linkHref.substr(0, 6).toLowerCase() === "msnim:")
-		{
-			intro = "Send instant message to ";
-			linkShow = linkHref.substr(6);
+			linkShow = linkShow.substr(7);
 		}
 		else if (linkHref.substr(0, 11).toLowerCase() === "javascript:")
 		{
 			intro = "Run script ";
-			linkShow = linkHref.substr(11);
+			linkShow = linkShow.substr(11);
 		}
 		else
 		{
-			intro = "Go to "
-			if (linkTarget === "_blank")
+			if (linkType === "form")
 			{
-				intro = "Open ";
+				intro = "Submit to ";
+			}
+			else
+			{
+				intro = "Go to "
+			}
+			if (linkTarget !== undefined && linkTarget !== "" && linkTarget !== "_parent" && linkTarget !== "_self" && linkTarget !== "_top")
+			{
+				if (linkType === "form")
+				{
+					intro = "Submit to ";
+				}
+				else
+				{
+					intro = "Open ";
+				}
 				outro = " in a new window";
 			}
 			if (alt === true && shift === false)
@@ -112,7 +108,14 @@ if (isInIFrame === false)
 			}
 			if (command === true)
 			{
-				intro = "Open ";
+				if (linkType === "form")
+				{
+					intro = "Submit to ";
+				}
+				else
+				{
+					intro = "Open ";
+				}
 				outro = " in a new";
 				if (alt === true)
 				{
@@ -131,20 +134,18 @@ if (isInIFrame === false)
 					outro = outro + " behind the current one";
 				}
 			}
-			linkShow = linkHref;
 		}
 		if (control === true)
 		{
 			intro = "Display a menu for ";
 			outro = "";
-			linkShow = linkHref;
 		}
 		statusBar.find("p").text(intro + "\"" + linkShow + "\"" + outro);
 	}
 	
 	function ShowStatusBar()
 	{
-		if (linkHref !== "")
+		if (linkHref !== undefined)
 		{
 			UpdateMessage();
 			statusBar.addClass("tools-rubenarakelyan-com-safari-gentlestatus-show");
@@ -166,18 +167,31 @@ if (isInIFrame === false)
 		statusBar = $("#tools-rubenarakelyan-com-safari-gentlestatus");
 		$(document).keydown(function(e) { DetectKeys(e, true); });
 		$(document).keyup(function(e) { DetectKeys(e, false); });
-		SendMessage("setting_external_only", null);
 		$("a").live("mouseover", function()
 		{
 			SendMessage("setting_external_only", null);
 			if (externalOnly === false || (externalOnly === true && window.location.hostname !== parseURL(this.href).host))
 			{
-				linkHref = this.href;
-				linkTarget = this.target;
+				linkType = "anchor";
+				linkHref = $(this).attr("href");
+				linkTarget = $(this).attr("target");
 				ShowStatusBar();
 			}
 		});
-		$("a").live("mouseout click", function()
+		$("form input[type=submit], form input[type=image], form button[type=submit]").live("mouseover", function()
+		{
+			var formAction = (($(this).attr("formaction") !== undefined) ? $(this).attr("formaction") : (($(this).parent("form").attr("action") !== undefined) ? $(this).parent("form").attr("action") : ""));
+			var formTarget = (($(this).attr("formtarget") !== undefined) ? $(this).attr("formtarget") : (($(this).parent("form").attr("target") !== undefined) ? $(this).parent("form").attr("target") : ""));
+			SendMessage("setting_external_only", null);
+			if (externalOnly === false || (externalOnly === true && window.location.hostname !== parseURL(formAction).host))
+			{
+				linkType = "form";
+				linkHref = formAction;
+				linkTarget = formTarget;
+				ShowStatusBar();
+			}
+		});
+		$("a, form input[type=submit], form input[type=image], form button[type=submit]").live("mouseout click", function()
 		{
 			HideStatusBar();
 		});
@@ -215,20 +229,25 @@ if (isInIFrame === false)
 		UpdateMessage();
 	}
 	
-	function HandleMessage(MsgEvent)
+	function HandleMessage(event)
 	{
-		var MsgName = MsgEvent.name;
-		var MsgData = MsgEvent.message;
-		switch (MsgName)
+		var name = event.name;
+		var message = event.message;
+		switch (name)
 		{
+			case "linkType":
+			{
+				linkType = message;
+				break;
+			}
 			case "linkHref":
 			{
-				linkHref = MsgData;
+				linkHref = message;
 				break;
 			}
 			case "linkTarget":
 			{
-				linkTarget = MsgData;
+				linkTarget = message;
 				break;
 			}
 			case "UpdateMessage":
@@ -248,27 +267,27 @@ if (isInIFrame === false)
 			}
 			case "shift":
 			{
-				shift = MsgData;
+				shift = message;
 				break;
 			}
 			case "control":
 			{
-				control = MsgData;
+				control = message;
 				break;
 			}
 			case "alt":
 			{
-				alt = MsgData;
+				alt = message;
 				break;
 			}
 			case "command":
 			{
-				command = MsgData;
+				command = message;
 				break;
 			}
 			case "setting_external_only":
 			{
-				externalOnly = MsgData;
+				externalOnly = message;
 				break;
 			}
 		}
@@ -284,11 +303,31 @@ else
 		$(document).keyup(function(e) { DetectKeys(e, false); });
 		$("a").live("mouseover", function()
 		{
-			SendMessage("linkHref", this.href);
-			SendMessage("linkTarget", this.target);
-			SendMessage("ShowStatusBar", true);
+			SendMessage("setting_external_only", null);
+			var externalOnly = window.top.externalOnly;
+			if (externalOnly === false || (externalOnly === true && window.location.hostname !== parseURL(this.href).host))
+			{
+				SendMessage("linkType", "anchor");
+				SendMessage("linkHref", $(this).attr("href"));
+				SendMessage("linkTarget", $(this).attr("target"));
+				SendMessage("ShowStatusBar", true);
+			}
 		});
-		$("a").live("mouseout click", function()
+		$("form input[type=submit], form input[type=image], form button[type=submit]").live("mouseover", function()
+		{
+			var formAction = (($(this).attr("formaction") !== undefined) ? $(this).attr("formaction") : (($(this).parent("form").attr("action") !== undefined) ? $(this).parent("form").attr("action") : ""));
+			var formTarget = (($(this).attr("formtarget") !== undefined) ? $(this).attr("formtarget") : (($(this).parent("form").attr("target") !== undefined) ? $(this).parent("form").attr("target") : ""));
+			SendMessage("setting_external_only", null);
+			var externalOnly = window.top.externalOnly;
+			if (externalOnly === false || (externalOnly === true && window.location.hostname !== parseURL(formAction).host))
+			{
+				SendMessage("linkType", "form");
+				SendMessage("linkHref", formAction);
+				SendMessage("linkTarget", formTarget);
+				SendMessage("ShowStatusBar", true);
+			}
+		});
+		$("a, form input[type=submit], form input[type=image], form button[type=submit]").live("mouseout click", function()
 		{
 			SendMessage("HideStatusBar", true);
 		});

@@ -1,19 +1,24 @@
 var externalOnly = safari.extension.settings.getItem("external_only");
 
-function GlobalHandleMessage(MsgEvent)
+function GlobalHandleMessage(event)
 {
-	var MsgName = MsgEvent.name;
-	var MsgData = MsgEvent.message;
-	switch (MsgName)
+	var name = event.name;
+	var message = event.message;
+	switch (name)
 	{
+		case "linkType":
+		{
+			GlobalReturnMessage("linkType", message);
+			break;
+		}
 		case "linkHref":
 		{
-			GlobalReturnMessage("linkHref", MsgData);
+			GlobalReturnMessage("linkHref", message);
 			break;
 		}
 		case "linkTarget":
 		{
-			GlobalReturnMessage("linkTarget", MsgData);
+			GlobalReturnMessage("linkTarget", message);
 			break;
 		}
 		case "UpdateMessage":
@@ -33,22 +38,22 @@ function GlobalHandleMessage(MsgEvent)
 		}
 		case "shift":
 		{
-			GlobalReturnMessage("shift", MsgData);
+			GlobalReturnMessage("shift", message);
 			break;
 		}
 		case "control":
 		{
-			GlobalReturnMessage("control", MsgData);
+			GlobalReturnMessage("control", message);
 			break;
 		}
 		case "alt":
 		{
-			GlobalReturnMessage("alt", MsgData);
+			GlobalReturnMessage("alt", message);
 			break;
 		}
 		case "command":
 		{
-			GlobalReturnMessage("command", MsgData);
+			GlobalReturnMessage("command", message);
 			break;
 		}
 		case "setting_external_only":
@@ -67,9 +72,9 @@ function GlobalHandleEvent(event)
 	}
 }
 
-function GlobalReturnMessage(MsgName, MsgData)
+function GlobalReturnMessage(name, message)
 {
-	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage(MsgName, MsgData);
+	safari.application.activeBrowserWindow.activeTab.page.dispatchMessage(name, message);
 }
 
 safari.application.addEventListener("message", GlobalHandleMessage, false);
