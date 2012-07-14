@@ -4,16 +4,14 @@
 	height: 16px !important;
 	margin: 0 !important;
 	max-width: 50% !important;
-	opacity: 1 !important;
 	padding: 0 !important;
 	position: fixed !important;
-	visibility: hidden !important;
 	width: auto !important;
 	z-index: 999999999999999999 !important;
 }
 
 #tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-show {
-	visibility: visible !important;
+	opacity: 1 !important;
 }
 
 #tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-left {

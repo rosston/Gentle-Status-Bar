@@ -148,13 +148,16 @@ if (isInIFrame === false)
 		if (linkHref !== undefined)
 		{
 			UpdateMessage();
-			statusBar.addClass("tools-rubenarakelyan-com-safari-gentlestatus-show");
+			statusBar.stop();
+			statusBar.fadeIn("fast", function() { statusBar.addClass("tools-rubenarakelyan-com-safari-gentlestatus-show"); });
 		}
 	}
 	
 	function HideStatusBar()
 	{
 		statusBar.removeClass("tools-rubenarakelyan-com-safari-gentlestatus-show");
+		statusBar.stop();
+		statusBar.fadeOut("fast");
 		if (statusBar.hasClass("tools-rubenarakelyan-com-safari-gentlestatus-right"))
 		{
 			statusBar.removeClass("tools-rubenarakelyan-com-safari-gentlestatus-right").addClass("tools-rubenarakelyan-com-safari-gentlestatus-left");
@@ -163,7 +166,7 @@ if (isInIFrame === false)
 	
 	$(function()
 	{
-		$("body").append("<div id=\"tools-rubenarakelyan-com-safari-gentlestatus\" class=\"tools-rubenarakelyan-com-safari-gentlestatus-left\"><p></p></div>");
+		$("body").append("<div id=\"tools-rubenarakelyan-com-safari-gentlestatus\" class=\"tools-rubenarakelyan-com-safari-gentlestatus-left\" style=\"display: none;\"><p></p></div>");
 		statusBar = $("#tools-rubenarakelyan-com-safari-gentlestatus");
 		$(document).keydown(function(e) { DetectKeys(e, true); });
 		$(document).keyup(function(e) { DetectKeys(e, false); });
