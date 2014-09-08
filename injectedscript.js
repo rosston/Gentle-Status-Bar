@@ -16,7 +16,7 @@ if (isInIFrame === false)
 	var linkHref = undefined;
 	var linkTarget = undefined;
 	var statusBar = null;
-	
+
 	function parseURL(url)
 	{
 		var a = document.createElement("a");
@@ -53,7 +53,7 @@ if (isInIFrame === false)
 			segments: a.pathname.replace(/^\//, "").split("/")
 		};
 	}
-	
+
 	function UpdateMessage()
 	{
 		var intro = "";
@@ -140,9 +140,9 @@ if (isInIFrame === false)
 			intro = "Display a menu for ";
 			outro = "";
 		}
-		statusBar.find("p").text(intro + "\"" + linkShow + "\"" + outro);
+		statusBar.find("p").text(intro + "“" + linkShow + "”" + outro);
 	}
-	
+
 	function ShowStatusBar()
 	{
 		if (linkHref !== undefined)
@@ -152,7 +152,7 @@ if (isInIFrame === false)
 			statusBar.fadeIn("fast", function() { statusBar.addClass("tools-rubenarakelyan-com-safari-gentlestatus-show"); });
 		}
 	}
-	
+
 	function HideStatusBar()
 	{
 		statusBar.removeClass("tools-rubenarakelyan-com-safari-gentlestatus-show");
@@ -163,7 +163,7 @@ if (isInIFrame === false)
 			statusBar.removeClass("tools-rubenarakelyan-com-safari-gentlestatus-right").addClass("tools-rubenarakelyan-com-safari-gentlestatus-left");
 		}
 	}
-	
+
 	$(function()
 	{
 		$("body").append("<div id=\"tools-rubenarakelyan-com-safari-gentlestatus\" class=\"tools-rubenarakelyan-com-safari-gentlestatus-left\" style=\"display: none;\"><p></p></div>");
@@ -210,7 +210,7 @@ if (isInIFrame === false)
 			}
 		});
 	});
-		   
+
 	function DetectKeys(e, k)
 	{
 		if (e.keyCode === 16)
@@ -231,7 +231,7 @@ if (isInIFrame === false)
 		}
 		UpdateMessage();
 	}
-	
+
 	function HandleMessage(event)
 	{
 		var name = event.name;
@@ -295,7 +295,7 @@ if (isInIFrame === false)
 			}
 		}
 	}
-	
+
 	safari.self.addEventListener("message", HandleMessage, false);
 }
 else
@@ -335,7 +335,7 @@ else
 			SendMessage("HideStatusBar", true);
 		});
 	});
-	
+
 	function DetectKeys(e, k)
 	{
 		if (e.keyCode === 16)
