@@ -2,9 +2,6 @@
   position: fixed !important;
   bottom: 0 !important;
   z-index: 9999 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  width: auto !important;
   background: #b6b6b6 !important;
 }
 
@@ -23,26 +20,22 @@
   right: 0 !important;
   border-top: 1px solid #737373 !important;
   border-left: 1px solid #737373 !important;
-  border-top-left-radius: 5px !important;
+  border-top-left-radius: 3px !important;
 }
 
 #tools-rubenarakelyan-com-safari-gentlestatus p {
-  overflow: hidden !important;
   margin: 0 !important;
   padding: 2px 12px !important;
-  min-width: 0 !important;
-  border: solid 1px hsl(0, 0%, 85%);
+  border: solid 1px hsl(0, 0%, 85%) !important;
   border-bottom: none;
-  border-left: none;
-  border-top-right-radius: 3px !important;
+  border-radius: 3px !important;
   color: hsl(0, 0%, 8%) !important;
-  vertical-align: middle !important;
   text-align: left !important;
-  text-shadow: #fff 0 1px 0 !important;
+  text-shadow: hsl(0, 0%, 95%) 0 1px 0 !important;
   white-space: nowrap !important;
-  letter-spacing: normal !important;
-  font: 10px/15px "Lucida Grande" serif !important;
-  line-height: normal !important;
+  font: 10px/15px "Lucida Grande", serif !important;
+
+  -webkit-font-smoothing: antialiased;
 }
 
 @media print {
