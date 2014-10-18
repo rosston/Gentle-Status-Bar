@@ -53,7 +53,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>https://raw.github.com/rubenarakelyan/Gentle-Status-Bar/master/gentlestatus.update.plist</string>
+	<string>https://raw.githubusercontent.com/sayzlim/Gentle-Status-Bar/master/gentlestatus.update.plist</string>
 	<key>Website</key>
 	<string>http://rubenarakelyan.github.io/Gentle-Status-Bar</string>
 </dict>
