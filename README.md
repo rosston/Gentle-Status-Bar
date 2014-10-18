@@ -1,7 +1,10 @@
-Gentle Status Bar is a Chrome-like status bar for Safari that fades in to show you where links lead.
+Gentle Status Bar, originally developed by [rosston](https://github.com/rosston/Gentle-Status-Bar "Gentle Status Bar"), is a Safari extension that shows Chrome-like status bar when you hover a link.
 
-## 2014-10-18 2.0 Release Notes
+I’ve taken over this project since rosston apparently is not active anymore — I can’t get him to accept the pull request. Download the version below to stay updated whenever I update this extension.
 
-- Matches Safari 8 flatter theme on Yosemite.
+[**Download Gentle Status Bar 2.0**](https://raw.github.com/sayzlim/Gentle-Status-Bar/blob/master/gentlestatus.safariextz "Download Gentle Status Bar 2.0")
 
-Visit http://rubenarakelyan.github.io/Gentle-Status-Bar/ to download the extension.
+
+#### 2014-10-18 2.0 Release Notes
+
+- Update the style to match Safari 8 on OS X Yosemite.

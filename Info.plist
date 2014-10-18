@@ -23,11 +23,6 @@
 	</dict>
 	<key>Content</key>
 	<dict>
-		<key>Blacklist</key>
-		<array>
-			<string>http://acid2.acidtests.org/#top</string>
-			<string>http://acid3.acidtests.org/</string>
-		</array>
 		<key>Scripts</key>
 		<dict>
 			<key>Start</key>
