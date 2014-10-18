@@ -2,7 +2,7 @@
   position: fixed !important;
   bottom: 0 !important;
   z-index: 9999 !important;
-  background: #b6b6b6 !important;
+  background: hsla(0, 0%, 96%, .9) !important;
 }
 
 #tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-show {
@@ -11,27 +11,25 @@
 
 #tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-left {
   left: 0 !important;
-  border-top: 1px solid #737373 !important;
-  border-right: 1px solid #737373 !important;
+  border-top: 1px solid hsla(0, 0%, 90%, .9) !important;
+  border-right: 1px solid hsla(0, 0%, 90%, .9) !important;
   border-top-right-radius: 3px !important;
 }
 
 #tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-right {
   right: 0 !important;
-  border-top: 1px solid #737373 !important;
-  border-left: 1px solid #737373 !important;
+  border-top: 1px solid hsla(0, 0%, 90%, .9) !important;
+  border-left: 1px solid hsla(0, 0%, 90%, .9) !important;
   border-top-left-radius: 3px !important;
 }
 
 #tools-rubenarakelyan-com-safari-gentlestatus p {
   margin: 0 !important;
   padding: 2px 8px 0 11px !important;
-  border: solid 1px hsl(0, 0%, 85%) !important;
   border-bottom: none;
   border-radius: 3px !important;
   color: hsl(0, 0%, 8%) !important;
   text-align: left !important;
-  text-shadow: hsl(0, 0%, 95%) 0 1px 0 !important;
   white-space: nowrap !important;
   font: 10px/1.5 "Lucida Grande", serif !important;
 

@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Daniel Matarazzo &amp; Ruben Arakelyan</string>
 	<key>Builder Version</key>
-	<string>9537.78.2</string>
+	<string>10600.1.25</string>
 	<key>CFBundleDisplayName</key>
 	<string>Gentle Status Bar</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.53</string>
+	<string>2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.54</string>
+	<string>2.0</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -43,6 +43,8 @@
 	</dict>
 	<key>Description</key>
 	<string>Gentle Status Bar is a Chrome-like status bar for Safari that fades in to show you where links lead.</string>
+	<key>DeveloperIdentifier</key>
+	<string>T7TL5VXW4L</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
