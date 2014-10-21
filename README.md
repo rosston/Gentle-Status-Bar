@@ -9,6 +9,11 @@ Iâ€™ve taken over this project since rosston apparently is not active anymore â€
 [**Download Gentle Status Bar 2.0**](https://raw.githubusercontent.com/sayzlim/Gentle-Status-Bar/master/gentlestatus.safariextension/gentlestatus.safariextz "Download Gentle Status Bar 2.0")
 
 
-#### 2014-10-18 2.0 Release Notes
+#### 2014-10-18 2.0 Release Notes:
 
 - Update the style to match Safari 8 on OS X Yosemite.
+
+#### 2014-10-21 2.1 Release Notes:
+
+- Switch typeface from Lucida Grande to Helvetica Neue.
+- Increase font-size for better legibility.

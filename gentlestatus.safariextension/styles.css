@@ -31,7 +31,7 @@
   color: hsl(0, 0%, 8%) !important;
   text-align: left !important;
   white-space: nowrap !important;
-  font: 10px/1.5 "Lucida Grande", serif !important;
+  font: 12px/1.5 "Helvetica Neue", "Lucida Grande", serif !important;
 
   -webkit-font-smoothing: antialiased;
 }

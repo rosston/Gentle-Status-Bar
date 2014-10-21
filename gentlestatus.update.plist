@@ -10,11 +10,11 @@
        <key>Developer Identifier</key>
        <string>48AV6Q8K94</string>
        <key>CFBundleVersion</key>
-       <string>2.0</string>
+       <string>2.1</string>
        <key>CFBundleShortVersionString</key>
-       <string>2.0</string>
+       <string>2.1</string>
        <key>URL</key>
-       <string>https://raw.githubusercontent.com/sayzlim/Gentle-Status-Bar/master/gentlestatus.safariextension/gentlestatus.safariextz</string>
+       <string>https://raw.githubusercontent.com/sayzlim/Gentle-Status-Bar/master/gentlestatus.safariextz</string>
      </dict>
    </array>
 </dict>
