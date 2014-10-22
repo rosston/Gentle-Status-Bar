@@ -4,6 +4,8 @@
 <dict>
 	<key>Author</key>
 	<string>Daniel Matarazzo &amp; Ruben Arakelyan</string>
+	<key>Builder Version</key>
+	<string>10600.1.25</string>
 	<key>CFBundleDisplayName</key>
 	<string>Gentle Status Bar</string>
 	<key>CFBundleIdentifier</key>
@@ -11,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.42</string>
+	<string>2.1</string>
 	<key>CFBundleVersion</key>
-	<string>1.42</string>
+	<string>2.1</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -21,11 +23,6 @@
 	</dict>
 	<key>Content</key>
 	<dict>
-		<key>Blacklist</key>
-		<array>
-			<string>http://acid2.acidtests.org/#top</string>
-			<string>http://acid3.acidtests.org/</string>
-		</array>
 		<key>Scripts</key>
 		<dict>
 			<key>Start</key>
@@ -36,11 +33,13 @@
 		</dict>
 		<key>Stylesheets</key>
 		<array>
-			<string>aaGentleStatus.css</string>
+			<string>styles.css</string>
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Fades in to show you where links lead without Safari's always-on status bar. Supports modifier keys.</string>
+	<string>Gentle Status Bar is a Chrome-like status bar for Safari that fades in to show you where links lead.</string>
+	<key>DeveloperIdentifier</key>
+	<string>T7TL5VXW4L</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -54,8 +53,8 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>http://tools.rubenarakelyan.com/safari-src/gentlestatus.update.plist</string>
+	<string>https://raw.githubusercontent.com/sayzlim/Gentle-Status-Bar/master/gentlestatus.update.plist</string>
 	<key>Website</key>
-	<string>http://tools.rubenarakelyan.com/safari/gentlestatus</string>
+	<string>http://rubenarakelyan.github.io/Gentle-Status-Bar</string>
 </dict>
 </plist>

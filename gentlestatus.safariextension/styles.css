@@ -1,0 +1,43 @@
+#tools-rubenarakelyan-com-safari-gentlestatus {
+  position: fixed !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  background: hsla(0, 0%, 96%, .75) !important;
+}
+
+#tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-show {
+  opacity: 1 !important;
+}
+
+#tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-left {
+  left: 0 !important;
+  border-top: 1px solid hsla(0, 0%, 90%, .75) !important;
+  border-right: 1px solid hsla(0, 0%, 90%, .75) !important;
+  border-top-right-radius: 3px !important;
+}
+
+#tools-rubenarakelyan-com-safari-gentlestatus.tools-rubenarakelyan-com-safari-gentlestatus-right {
+  right: 0 !important;
+  border-top: 1px solid hsla(0, 0%, 90%, .75) !important;
+  border-left: 1px solid hsla(0, 0%, 90%, .75) !important;
+  border-top-left-radius: 3px !important;
+}
+
+#tools-rubenarakelyan-com-safari-gentlestatus p {
+  margin: 0 !important;
+  padding: 2px 8px 0 11px !important;
+  border-bottom: none;
+  border-radius: 3px !important;
+  color: hsl(0, 0%, 8%) !important;
+  text-align: left !important;
+  white-space: nowrap !important;
+  font: 12px/1.5 "Helvetica Neue", "Lucida Grande", serif !important;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+@media print {
+  #tools-rubenarakelyan-com-safari-gentlestatus {
+    display: none !important;
+  }
+}
