@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Daniel Matarazzo &amp; Ruben Arakelyan</string>
+	<string>Sayz Lim</string>
 	<key>Builder Version</key>
 	<string>10600.1.25</string>
 	<key>CFBundleDisplayName</key>
 	<string>Gentle Status Bar</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.able-archer.gentleStatus</string>
+	<string>com.sayzlim.statusbar</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
@@ -53,8 +53,8 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>https://raw.githubusercontent.com/sayzlim/Gentle-Status-Bar/master/gentlestatus.update.plist</string>
+	<string>https://raw.githubusercontent.com/rosston/Gentle-Status-Bar/master/gentlestatus.update.plist</string>
 	<key>Website</key>
-	<string>http://rubenarakelyan.github.io/Gentle-Status-Bar</string>
+	<string>https://github.com/rosston/Gentle-Status-Bar</string>
 </dict>
 </plist>
