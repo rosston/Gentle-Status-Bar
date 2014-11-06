@@ -4,7 +4,7 @@
 
 Gentle Status Bar is a Safari extension that shows Chrome-like status bar when you hover a link.
 
-[**Download Gentle Status Bar**](https://raw.githubusercontent.com/sayzlim/Gentle-Status-Bar/master/gentlestatus.safariextz "Download Gentle Status Bar 2.0")
+[**Download Gentle Status Bar**](https://raw.githubusercontent.com/rosston/Gentle-Status-Bar/master/gentlestatus.safariextz "Download Gentle Status Bar 2.0")
 
 
 #### 2014-10-18 2.0 Release Notes:
