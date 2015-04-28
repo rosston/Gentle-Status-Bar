@@ -56,6 +56,8 @@ if (isInIFrame === false)
 
 	function UpdateMessage()
 	{
+		if (typeof linkHref == "undefined") return;
+
 		var intro = "";
 		var outro = "";
 		var linkShow = parseURL(linkHref).resolved;
